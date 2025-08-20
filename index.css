@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Luxury Casino Theme - Premium Gold & Dark */
+    --background: 0 0% 0%;
+    --foreground: 45 100% 85%;
+
+    --card: 0 100% 50%;
+    --card-foreground: 45 100% 85%;
+
+    --popover: 240 4% 8%;
+    --popover-foreground: 45 100% 85%;
+
+    --primary: 45 100% 60%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 240 4% 12%;
+    --secondary-foreground: 45 100% 85%;
+
+    --muted: 240 4% 12%;
+    --muted-foreground: 45 20% 65%;
+
+    --accent: 45 100% 70%;
+    --accent-foreground: 240 4% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 45 100% 20%;
+    --input: 240 4% 12%;
+    --ring: 45 100% 60%;
+
+    --radius: 1rem;
+
+    /* Luxury Gradients */
+    --gradient-luxury: linear-gradient(135deg, 
+      #ffffff00 0%,
+      hsla(0, 0%, 0%, 0) 35%,
+      #a25d0e00 100%);
+    
+    --gradient-gold: linear-gradient(135deg, 
+      #A25C0E 0%,
+      #F4EF5A 50%,
+      #A25C0E 100%);
+    
+    --gradient-premium: radial-gradient(circle at center,
+      hsla(45, 100%, 70%, 0) 0%,
+      hsla(46, 100%, 95%, 0) 40%,
+      transparent 70%);
+
+    /* Luxury Shadows */
+    --shadow-gold: 0 0 30px hsl(61, 100%, 50%);
+    --shadow-luxury: 0 20px 40px hsl(0, 100%, 50%);
+    --shadow-glow: 0 0 50px #F4EF5A;
+    
+    /* Animation Timing */
+    --animation-luxury: cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+
+    /* === Fundo com imagem + overlay escuro para legibilidade === */
+    background-image:
+      linear-gradient(to bottom, rgba(0,0,0,0.45), rgba(0,0,0,0.15), rgba(0,0,0,0.65)),
+      url('./assets/bg-tesouro.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Parallax suave (desative em mobile no media query abaixo se quiser) */
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Orbitron', serif;
+  }
+
+  /* Custom utility classes */
+  .clip-path-triangle {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  }
+
+  .bg-clip-text {
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .text-luxury {
+    font-family: 'Orbitron', serif;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--accent));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary));
+  }
+}
+
+/* Performance mobile: se preferir, desliga o parallax em telas pequenas */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+    background-position: center top;
+  }
+}
